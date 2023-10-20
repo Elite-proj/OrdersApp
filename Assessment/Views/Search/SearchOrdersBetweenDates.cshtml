@@ -1,0 +1,34 @@
+﻿@model BetweenDatesViewModel
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Seach orders</h1>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form method="post" asp-controller="Search" asp-action="SearchOrdersBetweenDates">
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Minimum Date:</label></div> <div class="col-sm-4">
+            <input asp-for="MinDate" type="date" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="MinDate" class="text-danger"></span>
+        </div>
+    </div> <div class="form-group row">
+        <div class="col-sm-2"><label>Maximum Date:</label></div> <div class="col-sm-4">
+            <input type="date" asp-for="MaxDate" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="MaxDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-sm-4">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div> 
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

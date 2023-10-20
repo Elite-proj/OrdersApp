@@ -1,0 +1,60 @@
+﻿@model Assessment.Models.Orders
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Orders</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Order" asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OrdersID" />
+            <div class="form-group">
+                <label asp-for="OrderNumber" class="control-label"></label>
+                <input asp-for="OrderNumber" class="form-control" />
+                <span asp-validation-for="OrderNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedDate" class="control-label"></label>
+                <input asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderTypeID" class="control-label"></label>
+                <select asp-for="OrderTypeID" class="form-control" asp-items="@ViewBag.OrderType">
+                    <option value="@Model.OrderTypeID" selected></option>
+                </select>
+                <span asp-validation-for="OrderTypeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderStatusID" class="control-label"></label>
+                <select asp-for="OrderStatusID" class="form-control" asp-items="@ViewBag.OrderStatus">
+                    <option value="@Model.OrderStatusID" selected></option>
+                </select>
+                <span asp-validation-for="OrderStatusID" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="DeleteStatus" value="Active" />
+           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Order" asp-action="List">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

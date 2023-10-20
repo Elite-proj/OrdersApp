@@ -1,0 +1,65 @@
+﻿@model Assessment.Models.Orders
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Orders</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OrderNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OrderType.OrderTypeID)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OrderStatus.OrderStatusID)
+        </dd class>*@
+       
+    </dl>
+
+    
+    <form asp-controller="Order" asp-action="Delete" method="post">
+        <input type="hidden" asp-for="OrdersID" />
+
+        <input type="hidden" asp-for="OrdersID" />
+
+        <input type="hidden" asp-for="OrderNumber" class="form-control" />
+
+        <input type="hidden" asp-for="CustomerName" class="form-control" />
+
+        <input type="hidden" asp-for="CreatedDate" class="form-control" />
+        <input type="hidden" asp-for="OrderTypeID" value="@Model.OrderTypeID" class="form-control" />
+        <input type="hidden" asp-for="OrderStatusID" value="@Model.OrderStatusID" class="form-control" />
+        <input type="hidden" asp-for="DeleteStatus" value="In-Active" />
+        
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-controller="Order" asp-action="List">Back to List</a>
+    </form>
+</div>

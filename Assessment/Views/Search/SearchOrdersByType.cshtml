@@ -1,0 +1,27 @@
+﻿@model Assessment.Models.OrderType
+
+@{
+    ViewData["Title"] = "SearchOrdersByType";
+}
+
+<h1>SearchOrdersByType</h1>
+
+<h4>OrderType</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Search" asp-action="SearchOrdersByType" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TypeDescription" class="control-label">Select type</label>
+                
+                <select asp-for="OrderTypeID" class="form-control" asp-items="@ViewBag.Types"></select>
+                <span asp-validation-for="OrderTypeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

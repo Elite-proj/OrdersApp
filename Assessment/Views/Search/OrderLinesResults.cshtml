@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Assessment.Models.OrderLine>
+
+@{
+    ViewData["Title"] = "OrderLinesResults";
+}
+
+<h1>OrderLinesResults</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LineNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCostPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductSalePrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+        
+            <th>
+                @Html.DisplayNameFor(model => model.Orders.OrdersID)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LineNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCostPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductSalePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.OrdersID)
+            </td>
+           
+           
+        </tr>
+}
+    </tbody>
+</table>

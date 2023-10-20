@@ -1,0 +1,57 @@
+﻿@model Assessment.Models.OrderLine
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Add";
+
+    
+}
+
+<h1>Add</h1>
+
+<h4>OrderLine</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="ProductCode" class="control-label"></label>
+                <input asp-for="ProductCode" class="form-control" />
+                <span asp-validation-for="ProductCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductCostPrice" class="control-label"></label>
+                <input asp-for="ProductCostPrice" class="form-control" />
+                <span asp-validation-for="ProductCostPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductSalePrice" class="control-label"></label>
+                <input asp-for="ProductSalePrice" class="form-control" />
+                <span asp-validation-for="ProductSalePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductTypeID" class="control-label"></label>
+                <select asp-for="ProductTypeID" class="form-control" asp-items="ViewBag.Types"></select>
+            </div>
+
+            <input type="hidden" asp-for="OrdersID" value="@Context.Session.GetInt32("OrdersID")" class="form-control" />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Order" asp-action="Details" asp-route-id="@Context.Session.GetInt32("OrdersID")">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

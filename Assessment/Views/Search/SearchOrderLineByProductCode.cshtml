@@ -1,0 +1,20 @@
+﻿@model  SearchOrderLineVM
+@{
+    ViewData["Title"] = "SearchOrderLineByProductCode";
+}
+
+<h1>Search OrderLine By ProductCode</h1>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form method="post" asp-controller="Search" asp-action="SearchOrderLineByProductCode">
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Product code:</label></div> <div class="col-sm-4">
+            <input asp-for="ProductCode" type="text" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-2 col-sm-4">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+
